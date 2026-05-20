@@ -13,10 +13,6 @@ conexion.commit()
 
 def agregar_producto(nombre, cantidad, precio):
     """Inserta un nuevo producto en la base de datos"""
-    if not isinstance(cantidad(int)):
-       raise TypeError('la cantidad debe ser un numero entero!')
-    if not isinstance(precio(float)):
-       raise TypeError('el precio debe ser un numero!')
     cursor.execute(
                     '''INSERT INTO productos (
                    nombre, cantidad, precio) VALUES (?, ?, ?)''', 
@@ -36,10 +32,6 @@ def mostrar_productos():
 
 def actualizar_precio(id_producto, nuevo_precio):
     """Modifica el precio de un producto"""
-    if not isinstance(id_producto(int)):
-       raise TypeError('el id del producto debe ser un numero entero!')
-    if not isinstance(nuevo_precio(float)):
-       raise TypeError('el precio debe ser un numero!') 
     cursor.execute('''UPDATE productos SET precio = ? WHERE id = ?''',
     (nuevo_precio, id_producto))
     conexion.commit()
@@ -47,8 +39,6 @@ def actualizar_precio(id_producto, nuevo_precio):
   
 def eliminar_producto(id_producto):
     """Elimina un producto de la base de datos"""
-    if not isinstance(id_producto(int)):
-       raise TypeError('el id del producto debe ser un numero entero!')
     cursor.execute('''DELETE FROM productos WHERE id = ?''', (id_producto,))
     if cursor.rowcount > 0:
         print(Fore.GREEN + "Producto eliminado con éxito.")
