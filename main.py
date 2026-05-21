@@ -1,14 +1,14 @@
 import base_de_datos
 from colorama import Fore, Back, init
 init()
-while True:
+def main():
+ while True:
     print(Back.BLACK + Fore.BLUE + "\nsistema de inventario")
     print(Back.BLACK +"1. Agregar producto")
     print(Back.BLACK +"2. Mostrar productos")
     print(Back.BLACK +"3. Actualizar precio de un producto")
     print(Back.BLACK +"4. Eliminar producto")
     print(Back.BLACK +"5. Salir")
-
     opcion = input("Seleccioná una opción: ")
     match opcion:
      case '1':
@@ -42,5 +42,7 @@ while True:
         break
      case _:
         print( Fore.RED + "Opción inválida. Intentá nuevamente.")
+
+main()
 
 base_de_datos.conexion.close()
